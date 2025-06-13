@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # Load environment variables
 app = Flask(__name__)
+load_dotenv()  # Load environment variables
 app.secret_key = os.getenv('SECRET_KEY') or 'dev-secret-key'
 
 # Sample data (replace with your own)
