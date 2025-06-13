@@ -25,10 +25,9 @@ def about():
 @app.route("/gallery")
 def gallery():
     try:
-        images = os.listdir('/Users/andrewswartz/PycharmProjects/DadWebsite/app/static/images')
+        images = os.listdir(os.path.join(app.static_folder, 'images'))  # Fixed path
     except FileNotFoundError:
         images = []
-
     return render_template("gallery.html", images=images)
 
 @app.route('/contact', methods=['GET', 'POST'])
