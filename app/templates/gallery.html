@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="gallery-section py-5">
+    <div class="container">
+        <!-- Gallery Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4">Our Favorite Memories</h1>
+            <p class="lead text-muted">With Dad</p>
+        </div>
+
+        <!-- Simple Image Grid -->
+        <div class="row g-3">
+            {% if images %}
+                {% for image in images %}
+                <div class="col-6 col-md-4 col-lg-3">
+                    <a href="{{ url_for('static', filename='images/' + image) }}" data-lightbox="gallery">
+                        <img src="{{ url_for('static', filename='images/' + image) }}"
+                             class="img-fluid rounded shadow-sm"
+                             alt="Memory {{ loop.index }}"
+                             loading="lazy">
+                    </a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center py-5">
+                    <div class="alert alert-info">
+                        <h4>No photos yet!</h4>
+                        <p>Add images to the <code>static/images</code> folder</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox CSS (for image popups) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+<style>
+    /* Hover effect */
+    .rounded:hover {
+        transform: scale(1.03);
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+</style>
+
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+{% endblock %}

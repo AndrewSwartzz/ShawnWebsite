@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero-section text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="display-4">Happy Father's Day, Dad!</h1>
+        <p class="lead">A special website just for you</p>
+        <img src="{{ url_for('static', filename='images/dad.jpg') }}" alt="{{ dad.name }}" class="img-fluid rounded-circle mt-4" style="width: 200px;">
+    </div>
+</section>
+
+<section class="features py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3><i class="bi bi-collection"></i> Gallery</h3>
+                        <p>Check out our favorite memories together.</p>
+                        <a href="{{ url_for('gallery') }}" class="btn btn-primary">View Photos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3><i class="bi bi-person"></i> About Dad</h3>
+                        <p>Learn more about the world's greatest father.</p>
+                        <a href="{{ url_for('about') }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3><i class="bi bi-envelope"></i> Contact</h3>
+                        <p>Send a special Father's Day message.</p>
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary">Send Message</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

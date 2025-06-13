@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section py-5">
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4">About {{ dad.name }}</h1>
+            <p class="lead text-muted">The man, the myth, the legend</p>
+        </div>
+
+        <!-- Bio Section -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                <img src="{{ url_for('static', filename='images/dad-about.jpg') }}"
+                     alt="{{ dad.name }}"
+                     class="img-fluid rounded shadow"
+                     style="max-height: 400px;">
+            </div>
+            <div class="col-lg-8">
+                <h2 class="mb-4">Biography</h2>
+                <p class="lead">{{ dad.bio }}</p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong>Birthday:</strong> March 4th, 1973
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Hometown:</strong> Nazareth, PA
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong>Best Dad Since:</strong> 2005
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Occupation:</strong> Financial Advisor
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interests Section -->
+        <div class="card mb-5 border-0 shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Passions & Hobbies</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for interest in dad.interests %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100 border-0">
+                            <div class="card-body text-center">
+                                <i class="bi bi-tools fs-1 text-primary mb-3"></i>
+                                <h4>{{ interest }}</h4>
+                                <p class="text-muted">
+                                    {% if interest == "Fishing" %}
+                                    Holds the family record for largest bass caught (12 lbs)
+                                    {% elif interest == "Woodworking" %}
+                                    Built the dining table we use every Thanksgiving
+                                    {% elif interest == "Classic Cars" %}
+                                    Restoring a 1967 Mustang in the garage
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <h2 class="text-center mb-4">Dad Through the Years</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h5>1985</h5>
+                    <p>Placeholder</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h5>2005</h5>
+                    <p>Became a father for the first time</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h5>2012</h5>
+                    <p>Placeholder</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h5>2024</h5>
+                    <p>PNC Investments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+<style>
+    /* Custom Timeline CSS */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #0d6efd;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+    .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+    }
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: white;
+        border: 4px solid #0d6efd;
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+    }
+    .left {
+        left: 0;
+    }
+    .right {
+        left: 50%;
+    }
+    .left::after {
+        right: -12px;
+    }
+    .right::after {
+        left: -12px;
+    }
+    .timeline-content {
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+</style>
+{% endblock %}
