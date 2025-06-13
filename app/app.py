@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 from dotenv import load_dotenv
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 load_dotenv()  # Load environment variables
 app.secret_key = os.getenv('SECRET_KEY') or 'dev-secret-key'
 
@@ -43,5 +43,5 @@ def contact():
     return render_template('contact.html')
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
